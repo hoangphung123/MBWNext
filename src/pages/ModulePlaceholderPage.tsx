@@ -1,0 +1,2 @@
+import { Link } from "react-router-dom";
+export function ModulePlaceholderPage({ moduleName }: { moduleName: string }) { return <section className="coming-soon"><p className="eyebrow dark">PHÂN HỆ ĐANG PHÁT TRIỂN</p><h1>{moduleName}</h1><p>Routing, quyền truy cập và layout đã sẵn sàng. Chức năng chi tiết sẽ dùng chung mock API và các component của giai đoạn 1.</p><Link className="primary-button compact" to="/app">← Về trang tổng quan</Link></section>; }
