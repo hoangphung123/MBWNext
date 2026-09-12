@@ -486,6 +486,23 @@ export const mbwNextMockData: MockData = {
         salesOrderId: "so-2026-0094",
         lines: [{ id: "sil-003", itemId: "item-fg-250", description: "Cà phê rang xay Premium 250g", unit: "bag", quantity: 12, unitPrice: 135_000, discountAmount: 0, vatRate: vat10, lineTotal: 1_620_000 }],
       },
+      {
+        id: "si-2026-0124",
+        documentNo: "SI-2026-0124",
+        status: "approved",
+        issueDate: "2026-08-28",
+        dueDate: "2026-10-12",
+        currency: "VND",
+        subtotal: 112_000_000,
+        discountAmount: 0,
+        vatAmount: 11_200_000,
+        totalAmount: 123_200_000,
+        paidAmount: 0,
+        balanceAmount: 123_200_000,
+        customerId: "cus-002",
+        salesOrderId: "legacy-so-project-005",
+        lines: [{ id: "sil-project-005", itemId: "item-fg-250", description: "Doanh thu thử nghiệm kênh B2B miền Bắc", unit: "bag", quantity: 830, unitPrice: 134_939.76, discountAmount: 0, vatRate: vat10, lineTotal: 112_000_000 }],
+      },
     ] as FinancialDocument[],
     purchaseInvoices: [
       {
@@ -523,6 +540,25 @@ export const mbwNextMockData: MockData = {
         supplierId: "sup-001",
         purchaseReceiptId: "grn-2026-0088",
         lines: [{ id: "pil-001", itemId: "item-rm-arabica", description: "Hạt cà phê Arabica loại 1", unit: "kg", quantity: 185, unitPrice: 210_000, discountAmount: 0, vatRate: vat10, lineTotal: 38_850_000 }],
+      },
+      {
+        id: "pi-2026-0086",
+        documentNo: "PI-2026-0086",
+        supplierInvoiceNo: "NCC-202608-086",
+        status: "approved",
+        issueDate: "2026-08-15",
+        dueDate: "2026-09-14",
+        currency: "VND",
+        subtotal: 62_400_000,
+        discountAmount: 0,
+        vatAmount: 6_240_000,
+        totalAmount: 68_640_000,
+        paidAmount: 0,
+        balanceAmount: 68_640_000,
+        supplierId: "sup-001",
+        purchaseReceiptId: "legacy-grn-project-005",
+        purchaseOrderId: "legacy-po-project-005",
+        lines: [{ id: "pil-project-005", itemId: "item-rm-arabica", description: "Chi phí nguyên liệu phục vụ mở rộng B2B miền Bắc", unit: "kg", quantity: 297.142857, unitPrice: 210_000, discountAmount: 0, vatRate: vat10, lineTotal: 62_400_000 }],
       },
     ] as FinancialDocument[],
     payments: [
@@ -617,7 +653,7 @@ export const mbwNextMockData: MockData = {
 
   projects: {
     projects: [
-      { id: "proj-001", code: "PRJ-2026-005", name: "Mở rộng kênh B2B miền Bắc", customerId: "cus-002", managerId: "emp-004", startDate: "2026-07-01", endDate: "2026-10-31", budgetAmount: 180_000_000, actualCost: 62_400_000, actualRevenue: 112_000_000, status: "in_progress", progressPercent: 55 },
+      { id: "proj-001", code: "PRJ-2026-005", name: "Mở rộng kênh B2B miền Bắc", customerId: "cus-002", managerId: "emp-004", teamMemberIds: ["emp-004", "emp-005"], startDate: "2026-07-01", endDate: "2026-10-31", budgetAmount: 180_000_000, actualCost: 62_400_000, actualRevenue: 112_000_000, status: "in_progress", progressPercent: 55 },
     ],
     tasks: [
       { id: "task-001", projectId: "proj-001", code: "PRJ-005-01", title: "Khảo sát vị trí cửa hàng", assigneeId: "emp-004", startDate: "2026-07-01", dueDate: "2026-07-15", status: "completed", progressPercent: 100, predecessorIds: [] },
@@ -629,8 +665,8 @@ export const mbwNextMockData: MockData = {
       { id: "time-002", projectId: "proj-001", taskId: "task-002", employeeId: "emp-005", workDate: "2026-08-28", hours: 3, status: "submitted", note: "Chuẩn bị phương án logistics" },
     ],
     financialEntries: [
-      { id: "pfe-001", projectId: "proj-001", postingDate: "2026-08-15", entryType: "expense", sourceDocumentNo: "PI-2026-0074", description: "Chi phí khảo sát thị trường", amount: 12_400_000 },
-      { id: "pfe-002", projectId: "proj-001", postingDate: "2026-08-28", entryType: "revenue", sourceDocumentNo: "SI-2026-0115", description: "Doanh thu đơn hàng thử nghiệm", amount: 112_000_000 },
+      { id: "pfe-001", projectId: "proj-001", postingDate: "2026-08-15", entryType: "expense", sourceDocumentNo: "PI-2026-0086", description: "Chi phí nguyên liệu phục vụ mở rộng B2B miền Bắc", amount: 62_400_000 },
+      { id: "pfe-002", projectId: "proj-001", postingDate: "2026-08-28", entryType: "revenue", sourceDocumentNo: "SI-2026-0124", description: "Doanh thu thử nghiệm kênh B2B miền Bắc", amount: 112_000_000 },
     ],
   },
 

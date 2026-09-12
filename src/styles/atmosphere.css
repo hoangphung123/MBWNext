@@ -1,0 +1,157 @@
+/*
+ * Soft ambient layers: decoration stays behind information, never behind form fields.
+ * No animation is used so the workspace remains calm during long operational sessions.
+ */
+.sidebar {
+  background:
+    radial-gradient(470px 380px at -20% -11%, rgba(77, 197, 255, .24), transparent 62%),
+    radial-gradient(330px 290px at 118% 57%, rgba(156, 105, 255, .26), transparent 70%),
+    linear-gradient(164deg, #0b152c 0%, #122649 52%, #211d4d 100%);
+}
+
+.sidebar::before {
+  background: linear-gradient(135deg, transparent 0 42%, rgba(150, 219, 255, .07) 43% 45%, transparent 46% 100%);
+  content: "";
+  height: 360px;
+  left: -150px;
+  pointer-events: none;
+  position: absolute;
+  top: 135px;
+  transform: rotate(12deg);
+  width: 410px;
+}
+
+.sidebar::after {
+  background: radial-gradient(circle, rgba(146, 127, 255, .32) 0%, rgba(82, 154, 255, .1) 35%, transparent 69%);
+  filter: blur(3px);
+  height: 250px;
+  right: -128px;
+  top: 238px;
+  width: 250px;
+}
+
+/* The sidebar is navigation, not page content: it remains available while a long page scrolls. */
+.sidebar {
+  align-self: start;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar nav {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 2px;
+  scrollbar-color: rgba(181, 197, 232, .34) transparent;
+  scrollbar-width: thin;
+}
+
+.sidebar-bottom { flex: 0 0 auto; margin-top: 0; }
+
+.command-center {
+  background:
+    radial-gradient(760px 480px at 98% -8%, rgba(120, 104, 240, .17), transparent 63%),
+    radial-gradient(600px 400px at -12% 24%, rgba(64, 194, 236, .12), transparent 65%),
+    radial-gradient(550px 340px at 51% 101%, rgba(196, 146, 255, .075), transparent 67%),
+    #f5f8fd;
+}
+
+.command-center::after {
+  background: linear-gradient(118deg, transparent 0 44%, rgba(110, 125, 235, .07) 45% 48%, transparent 49% 100%);
+  content: "";
+  height: 720px;
+  pointer-events: none;
+  position: absolute;
+  right: -210px;
+  top: -235px;
+  transform: rotate(-9deg);
+  width: 890px;
+  z-index: -1;
+}
+
+.command-center > * { position: relative; }
+
+.command-hero {
+  background:
+    radial-gradient(340px 260px at 76% 15%, rgba(73, 222, 225, .2), transparent 69%),
+    radial-gradient(330px 270px at 108% 90%, rgba(161, 100, 255, .28), transparent 68%),
+    linear-gradient(120deg, #101b35 0%, #1e3666 50%, #483d92 100%);
+}
+
+.command-hero::before { opacity: .46; }
+
+/* Every module is rendered inside main-content. The wave belongs here, not to one page type. */
+.main-content {
+  background: #f7f7fb;
+  isolation: isolate;
+  position: relative;
+}
+
+.main-content::before {
+  background: url("/assets/v904-nunny-012-preview.jpg") center / cover no-repeat;
+  content: "";
+  height: 100%;
+  inset: 0;
+  opacity: .3;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.main-content::after { display: none; }
+
+.main-content > :not(.topbar) { position: relative; z-index: 1; }
+
+.dashboard-page:not(.command-center) {
+  background: #f5f7fd;
+  isolation: isolate;
+  min-height: calc(100vh - 76px);
+  overflow: hidden;
+  position: relative;
+}
+
+/* A matching but lighter flow for the legacy dashboard-page layout. */
+.dashboard-page:not(.command-center)::before {
+  background:
+    radial-gradient(ellipse 58% 47% at 42% 62%, rgba(116, 97, 255, .42) 0 22%, rgba(154, 141, 255, .24) 39%, transparent 70%),
+    radial-gradient(ellipse 47% 42% at 74% 42%, rgba(83, 174, 255, .35) 0 23%, rgba(145, 134, 255, .18) 48%, transparent 72%),
+    radial-gradient(ellipse 55% 35% at 33% 83%, rgba(202, 180, 255, .26) 0 22%, transparent 70%);
+  content: "";
+  filter: blur(26px);
+  height: 610px;
+  opacity: .45;
+  pointer-events: none;
+  position: absolute;
+  right: -112px;
+  bottom: -230px;
+  transform: rotate(-10deg) skewX(-8deg);
+  width: min(1030px, 82vw);
+  z-index: -1;
+}
+
+.dashboard-page:not(.command-center)::after {
+  background: linear-gradient(120deg, transparent 0 38%, rgba(255, 255, 255, .67) 44%, rgba(255, 255, 255, .08) 51%, transparent 61%);
+  border-radius: 50%;
+  content: "";
+  height: 370px;
+  opacity: .38;
+  pointer-events: none;
+  position: absolute;
+  right: -140px;
+  bottom: -148px;
+  transform: rotate(-13deg);
+  width: min(920px, 75vw);
+  z-index: -1;
+}
+
+.dashboard-page:not(.command-center) > * { position: relative; }
+
+@media (max-width: 660px) {
+  .command-center::after,
+  .sidebar::before { display: none; }
+
+  .dashboard-page:not(.command-center) { min-height: calc(100vh - 64px); }
+}
